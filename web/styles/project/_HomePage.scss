@@ -4,6 +4,16 @@ h1 {
   font-weight: 600 !important;
 }
 
+.sidebar {
+  background-color: $wc-grey;
+}
+
+.card {
+  background-color: transparent;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
 .navbar {
   background: #0f4583 url(../images/fwc_darkbluebg.png) repeat !important;
   img {

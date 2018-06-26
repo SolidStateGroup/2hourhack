@@ -29,7 +29,7 @@ export default class Map extends Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-md-2 sidebar" style={{paddingRight: 0}}>
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Card title</h5>
@@ -40,7 +40,7 @@ export default class Map extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-10" style={{paddingLeft: 0}}>
                         <ReactMapGL
                             {...viewport}
                             onViewportChange={(viewport) => this.setState({viewport})}

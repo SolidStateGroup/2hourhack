@@ -18,27 +18,27 @@ const Point = class extends Component {
         switch (emotion.toLowerCase()) {
             case"joy":
                 return (
-                    <div style={{width: 10, height: 10, backgroundColor: 'yellow'}}>
+                    <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'yellow', borderRadius: 10}}>
                     </div>
                 )
             case"anger":
                 return (
-                    <div style={{width: 10, height: 10, backgroundColor: 'red'}}>
+                    <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'red', borderRadius: 10}}>
                     </div>
                 )
             case"fear":
                 return (
-                    <div style={{width: 10, height: 10, backgroundColor: 'grey'}}>
+                    <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'grey', borderRadius: 10}}>
                     </div>
                 )
             case"disgust":
                 return (
-                    <div style={{width: 10, height: 10, backgroundColor: 'green'}}>
+                    <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'green', borderRadius: 10}}>
                     </div>
                 )
             case"sadness":
                 return (
-                    <div style={{width: 10, height: 10, backgroundColor: 'blue'}}>
+                    <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'blue', borderRadius: 10}}>
                     </div>
                 )
         }
@@ -100,7 +100,7 @@ export default class Map extends Component {
                 }
             ],
             viewport: {
-                width: 1000,
+                width: 2000,
                 height: 500,
                 latitude: 37.7577,
                 longitude: -122.4376,
@@ -124,10 +124,10 @@ export default class Map extends Component {
                     </Column>
                 </Row>
                 <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-md-2 sidebar" style={{paddingRight: 0}}>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
+                                <h5 className="card-title">Recent Tweets</h5>
                                 <ul>
                                     {tweets.map((tweet) => (
                                         <li>
@@ -139,7 +139,7 @@ export default class Map extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-10" style={{paddingLeft: 0}}>
                         <ReactMapGL
                             {...viewport}
                             onViewportChange={(viewport) => this.setState({viewport})}

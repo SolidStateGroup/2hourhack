@@ -22,6 +22,10 @@ h1 {
   padding-left: 0 !important;
 }
 
+.mapboxgl-missing-css {
+  display: none !important;
+}
+
 .navbar {
   background: #0f4583 url(../images/fwc_darkbluebg.png) repeat !important;
   img {

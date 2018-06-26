@@ -17,7 +17,7 @@ module.exports = class extends React.Component {
     render = () => {
         return (
             <div>
-                Home
+                Testing a deploy
             </div>
         );
     }

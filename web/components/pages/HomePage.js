@@ -14,31 +14,36 @@ const Point = class extends Component {
     displayName: 'TheComponent'
 
     render() {
-        const {emotion} = this.props;
+        const {emotion,emojiMode} = this.props;
         switch (emotion.toLowerCase()) {
             case"joy":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'yellow', borderRadius: 10}}>
+                        {emojiMode&&"😂"}
                     </div>
                 )
             case"anger":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'red', borderRadius: 10}}>
+                        {emojiMode&&"😠"}
                     </div>
                 )
             case"fear":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'grey', borderRadius: 10}}>
+                        {emojiMode&&"😨"}
                     </div>
                 )
             case"disgust":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'green', borderRadius: 10}}>
+                        {emojiMode&&"🤢"}
                     </div>
                 )
             case"sadness":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'blue', borderRadius: 10}}>
+                        {emojiMode&&"😔"}
                     </div>
                 )
         }
@@ -48,31 +53,36 @@ const TweetAside = class extends Component {
     displayName: 'TheComponent'
 
     render() {
-        const {emotion} = this.props;
+        const {emotion,emojiMode} = this.props;
         switch (emotion.toLowerCase()) {
             case"joy":
                 return (
-                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'yellow'}}>
+                    <span style={{display: "inline-block", textAlign:"center", width: 10, height: 10, backgroundColor: 'yellow'}}>
+                        {emojiMode&&"😂"}
                     </span>
                 )
             case"anger":
                 return (
-                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'red'}}>
+                    <span style={{display: "inline-block",textAlign:"center", width: 10, height: 10, backgroundColor: 'red'}}>
+                        {emojiMode&&"😠"}
                     </span>
                 )
             case"fear":
                 return (
-                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'grey'}}>
+                    <span style={{display: "inline-block",textAlign:"center", width: 10, height: 10, backgroundColor: 'grey'}}>
+                        {emojiMode&&"😨"}
                     </span>
                 )
             case"disgust":
                 return (
-                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'green'}}>
+                    <span style={{display: "inline-block", textAlign:"center",width: 10, height: 10, backgroundColor: 'green'}}>
+                        {emojiMode&&"🤢"}
                     </span>
                 )
             case"sadness":
                 return (
-                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'blue'}}>
+                    <span style={{display: "inline-block", textAlign:"center",width: 10, height: 10, backgroundColor: 'blue'}}>
+                        {emojiMode&&"😔"}
                     </span>
                 )
         }

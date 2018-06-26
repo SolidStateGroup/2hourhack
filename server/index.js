@@ -23,7 +23,23 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // parse various different custom JSON types as JSON
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
+
+
+
+// provide raw body
+app.use(function (req, res, next) {
+    req.rawBody = '';
+    req.setEncoding('utf8');
+
+    req.on('data', function (chunk) {
+        req.rawBody += chunk;
+    });
+
+    req.on('end', function () {
+        next();
+    });
+});
 
 app.use('/api', api());
 app.use(spm);
@@ -33,6 +49,7 @@ app.get('/', function (req, res) {
         isDev
     });
 });
+
 
 app.listen(port, function () {
     console.log('Server listening on: ' + port);

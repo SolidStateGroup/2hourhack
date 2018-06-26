@@ -66,6 +66,22 @@ var Utils = {
         return str;
     },
 
+    convertImageUrltoBlob: function(url){
+        const toDataURL = url => fetch(url)
+            .then(response => response.blob())
+            .then(blob => new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.onerror = reject
+                reader.readAsDataURL(blob)
+            }))
+
+        return toDataURL(url)
+            .then(dataUrl => {
+               return dataUrl
+            })
+    },
+
     toParam: function (obj) { //{min:100,max:200} -> ?min=100&max=200
         return Object.keys(obj).map(function (k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]);

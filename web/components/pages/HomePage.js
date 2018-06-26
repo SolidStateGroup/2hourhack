@@ -115,6 +115,14 @@ export default class Map extends Component {
         const {viewport, tweets} = this.state;
         return (
             <div>
+                <Row>
+                    <Column>
+                        Emoji mode
+                    </Column>
+                    <Column>
+                        <Switch onChange={(checked)=>{this.setState({checked})}} checked={this.state.checked}/>
+                    </Column>
+                </Row>
                 <div className="row">
                     <div className="col-md-2">
                         <div className="card">
@@ -139,7 +147,7 @@ export default class Map extends Component {
                             mapboxApiAccessToken={TOKEN}>
                             {tweets.map((tweet) => (
                                 <Marker latitude={tweet.lat} longitude={tweet.lng} offsetLeft={-20} offsetTop={-10}>
-                                    <Point emotion={tweet.emotion}/>
+                                    <Point emojiMode={this.state.checked} emotion={tweet.emotion}/>
                                 </Marker>
                             ))}
                         </ReactMapGL>

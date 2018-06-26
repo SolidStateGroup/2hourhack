@@ -44,6 +44,40 @@ const Point = class extends Component {
         }
     }
 };
+const TweetAside = class extends Component {
+    displayName: 'TheComponent'
+
+    render() {
+        const {emotion} = this.props;
+        switch (emotion.toLowerCase()) {
+            case"joy":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'yellow'}}>
+                    </span>
+                )
+            case"anger":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'red'}}>
+                    </span>
+                )
+            case"fear":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'grey'}}>
+                    </span>
+                )
+            case"disgust":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'green'}}>
+                    </span>
+                )
+            case"sadness":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'blue'}}>
+                    </span>
+                )
+        }
+    }
+};
 
 export default class Map extends Component {
     constructor(props) {
@@ -89,6 +123,7 @@ export default class Map extends Component {
                                 <ul>
                                     {tweets.map((tweet) => (
                                         <li>
+                                            <TweetAside emotion={tweet.emotion}/>
                                             {tweet.text}
                                         </li>
                                     ))}

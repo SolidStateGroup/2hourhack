@@ -19,10 +19,6 @@ const rootElement = document.getElementById('app');
 
 // Render the React application to the DOM
 AsyncStorage.getItem("t", (err,res)=>{
-    if (res){
-        AppActions.setToken(res)
-    }
-
     setTimeout(()=>{
         ReactDOM.render(
             <Router history={browserHistory} routes={routes}/>,

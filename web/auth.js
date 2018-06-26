@@ -1,3 +1,4 @@
+import './fb'
 const Facebook = {
     init: (appId) => {
         window.fbAsyncInit = function () {
@@ -10,16 +11,18 @@ const Facebook = {
     },
     login: function(permissions) {
         return new Promise((resolve) => {
-            if (typeof FB != "undefined") {
-                FB.login(function () {
-                    if (FB.getAccessToken()) {
-                        resolve(FB.getAccessToken());
-                    }
-                }, { scope: permissions || 'public_profile,email' });
-                return true;
-            } else {
-                return false;
-            }
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me?fields=picture.type(large),first_name,last_name', function(response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                        console.log(response)
+                        resolve(response)
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            },{scope: 'user_photos'});
         });
     },
     logout: () => {

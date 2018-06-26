@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactMapGL, {Marker, NavigationControl} from 'react-map-gl';
+import ReactMapGL, {Marker, NavigationControl, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const TOKEN = 'pk.eyJ1IjoibmlhbGwtc3NnIiwiYSI6ImNpZXd2ZXkwdDAwMGJ1Z20wbnMxZnN1NmcifQ.yrI7TYFTV2mlzvWV0kI71A';
@@ -111,13 +111,24 @@ export default class Map extends Component {
             ],
             viewport: {
                 width: 2000,
-                height: 500,
+                height: 1080,
                 latitude: 37.7577,
                 longitude: -122.4376,
                 zoom: 0
             },
             popupInfo: null
         };
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            fetch('http://world-cup-sentiment-api.dokku1.solidstategroup.com/sentiment')
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res.length)
+                    this.setState({tweets: res});
+                })
+        }, 1000);
     }
 
 
@@ -156,8 +167,8 @@ export default class Map extends Component {
                             mapStyle="mapbox://styles/mapbox/dark-v9"
                             mapboxApiAccessToken={TOKEN}>
                             {tweets.map((tweet) => (
-                                <Marker latitude={tweet.lat} longitude={tweet.lng} offsetLeft={-20} offsetTop={-10}>
-                                    <Point emojiMode={this.state.checked} emotion={tweet.emotion}/>
+                                <Marker latitude={tweet.lat} longitude={tweet.lng}>
+                                    <Point emotion={tweet.emotion}/>
                                 </Marker>
                             ))}
                         </ReactMapGL>

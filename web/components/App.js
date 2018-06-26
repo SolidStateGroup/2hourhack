@@ -30,7 +30,7 @@ export default class App extends Component {
                 <nav className={"navbar navbar-fixed-top"}>
                     <ul className="nav justify-content-start">
                         <li className={"nav-item"}>
-                            <Link to={"/"} className={"nav-link"}>
+                            <Link to={"/"} className={"nav-link mr-md-auto "}>
                                 <img src="../images/world-cup.png" />
                             </Link>
                         </li>

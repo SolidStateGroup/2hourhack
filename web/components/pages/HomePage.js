@@ -48,6 +48,21 @@ const Point = class extends Component {
                     <div style={{width: 10, height: 10, backgroundColor: 'red'}}>
                     </div>
                 )
+            case"fear":
+                return (
+                    <div style={{width: 10, height: 10, backgroundColor: 'grey'}}>
+                    </div>
+                )
+            case"disgust":
+                return (
+                    <div style={{width: 10, height: 10, backgroundColor: 'green'}}>
+                    </div>
+                )
+            case"sadness":
+                return (
+                    <div style={{width: 10, height: 10, backgroundColor: 'blue'}}>
+                    </div>
+                )
         }
     }
 };

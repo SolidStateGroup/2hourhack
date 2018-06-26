@@ -27,11 +27,11 @@ export default class App extends Component {
 
         return (
             <div>
-                <nav className={"navbar navbar-fixed-top navbar-light"}>
+                <nav className={"navbar navbar-fixed-top"}>
                     <ul className="nav justify-content-start">
                         <li className={"nav-item"}>
                             <Link to={"/"} className={"nav-link"}>
-                                2 Hour hack
+                                <img src="../images/world-cup.png" />
                             </Link>
                         </li>
                     </ul>

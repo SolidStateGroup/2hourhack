@@ -14,36 +14,36 @@ const Point = class extends Component {
     displayName: 'TheComponent'
 
     render() {
-        const {emotion,emojiMode} = this.props;
+        const {emotion, emojiMode} = this.props;
         switch (emotion.toLowerCase()) {
             case"joy":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'yellow', borderRadius: 10}}>
-                        {emojiMode&&"😂"}
+                        {emojiMode && "😂"}
                     </div>
                 )
             case"anger":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'red', borderRadius: 10}}>
-                        {emojiMode&&"😠"}
+                        {emojiMode && "😠"}
                     </div>
                 )
             case"fear":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'grey', borderRadius: 10}}>
-                        {emojiMode&&"😨"}
+                        {emojiMode && "😨"}
                     </div>
                 )
             case"disgust":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'green', borderRadius: 10}}>
-                        {emojiMode&&"🤢"}
+                        {emojiMode && "🤢"}
                     </div>
                 )
             case"sadness":
                 return (
                     <div className="pulse" style={{width: 20, height: 20, backgroundColor: 'blue', borderRadius: 10}}>
-                        {emojiMode&&"😔"}
+                        {emojiMode && "😔"}
                     </div>
                 )
         }
@@ -53,36 +53,66 @@ const TweetAside = class extends Component {
     displayName: 'TheComponent'
 
     render() {
-        const {emotion,emojiMode} = this.props;
+        const {emotion, emojiMode} = this.props;
         switch (emotion.toLowerCase()) {
             case"joy":
                 return (
-                    <span style={{display: "inline-block", textAlign:"center", width: 10, height: 10, backgroundColor: 'yellow'}}>
-                        {emojiMode&&"😂"}
+                    <span style={{
+                        display: "inline-block",
+                        textAlign: "center",
+                        width: 10,
+                        height: 10,
+                        backgroundColor: 'yellow'
+                    }}>
+                        {emojiMode && "😂"}
                     </span>
                 )
             case"anger":
                 return (
-                    <span style={{display: "inline-block",textAlign:"center", width: 10, height: 10, backgroundColor: 'red'}}>
-                        {emojiMode&&"😠"}
+                    <span style={{
+                        display: "inline-block",
+                        textAlign: "center",
+                        width: 10,
+                        height: 10,
+                        backgroundColor: 'red'
+                    }}>
+                        {emojiMode && "😠"}
                     </span>
                 )
             case"fear":
                 return (
-                    <span style={{display: "inline-block",textAlign:"center", width: 10, height: 10, backgroundColor: 'grey'}}>
-                        {emojiMode&&"😨"}
+                    <span style={{
+                        display: "inline-block",
+                        textAlign: "center",
+                        width: 10,
+                        height: 10,
+                        backgroundColor: 'grey'
+                    }}>
+                        {emojiMode && "😨"}
                     </span>
                 )
             case"disgust":
                 return (
-                    <span style={{display: "inline-block", textAlign:"center",width: 10, height: 10, backgroundColor: 'green'}}>
-                        {emojiMode&&"🤢"}
+                    <span style={{
+                        display: "inline-block",
+                        textAlign: "center",
+                        width: 10,
+                        height: 10,
+                        backgroundColor: 'green'
+                    }}>
+                        {emojiMode && "🤢"}
                     </span>
                 )
             case"sadness":
                 return (
-                    <span style={{display: "inline-block", textAlign:"center",width: 10, height: 10, backgroundColor: 'blue'}}>
-                        {emojiMode&&"😔"}
+                    <span style={{
+                        display: "inline-block",
+                        textAlign: "center",
+                        width: 10,
+                        height: 10,
+                        backgroundColor: 'blue'
+                    }}>
+                        {emojiMode && "😔"}
                     </span>
                 )
         }
@@ -133,7 +163,7 @@ export default class Map extends Component {
 
 
     render() {
-        const {viewport, tweets} = this.state;
+        const {viewport, checked, tweets} = this.state;
         return (
             <div>
                 <Row>
@@ -141,7 +171,9 @@ export default class Map extends Component {
                         Emoji mode
                     </Column>
                     <Column>
-                        <Switch onChange={(checked)=>{this.setState({checked})}} checked={this.state.checked}/>
+                        <Switch onChange={(checked) => {
+                            this.setState({checked})
+                        }} checked={this.state.checked}/>
                     </Column>
                 </Row>
                 <div className="row">
@@ -152,7 +184,7 @@ export default class Map extends Component {
                                 <ul>
                                     {tweets.map((tweet) => (
                                         <li>
-                                            <TweetAside emotion={tweet.emotion}/>
+                                            <TweetAside emojiMode={checked} emotion={tweet.emotion}/>
                                             {tweet.text}
                                         </li>
                                     ))}
@@ -168,7 +200,7 @@ export default class Map extends Component {
                             mapboxApiAccessToken={TOKEN}>
                             {tweets.map((tweet) => (
                                 <Marker latitude={tweet.lat} longitude={tweet.lng}>
-                                    <Point emotion={tweet.emotion}/>
+                                    <Point emojiMode={checked} emotion={tweet.emotion}/>
                                 </Marker>
                             ))}
                         </ReactMapGL>

@@ -29,6 +29,11 @@ module.exports = {
             })
         ],
     },
+    externals: {
+        // require("jquery") is external and available
+        //  on the global var jQuery
+        "jquery": "jQuery",
+    },
     output: {
         path: path.join(__dirname, '../build'),
         filename: '[name].[hash].js',

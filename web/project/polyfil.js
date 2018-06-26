@@ -1,11 +1,13 @@
 import Promise from 'promise-polyfill';
 import 'whatwg-fetch';
-import {AsyncStorage, AppState, NetInfo, Clipboard} from 'pollyfill-react-native';
+import {AsyncStorage, AppState, NetInfo, Clipboard} from 'polyfill-react-native';
 
 window.AppState = AppState;
 window.NetInfo = NetInfo;
 window.Clipboard = Clipboard;
 window.AsyncStorage = AsyncStorage;
+import Switch from 'rc-switch';
+window.Switch = Switch;
 
 // To add to window
 if (!window.Promise) {

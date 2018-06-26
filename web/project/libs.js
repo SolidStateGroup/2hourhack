@@ -1,35 +1,65 @@
+import Project from '../../common/project';
+import Bootstrap from '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import "ionicons/dist/css/ionicons.min.css";
+
+window.moment = require('moment/min/moment.min');
+
+//Optimise lodash
+import each from 'lodash/each';
+import merge from 'lodash/merge';
+import map from 'lodash/map';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import partial from 'lodash/partial';
+import cloneDeep from 'lodash/cloneDeep';
+import findIndex from 'lodash/findIndex';
+import range from 'lodash/range';
+import keyBy from 'lodash/keyBy';
+
+window._ = {each, filter, find, merge, partial, findIndex, range, map, cloneDeep, keyBy};
+
+import Link from 'react-router';
+
+global.Link = Link;
+
 window.React = require('react');
 window.ReactDOM = require('react-dom');
-window.render = require('react-dom').render;
+window.Any = React.PropTypes.any;
+window.OptionalArray = React.PropTypes.array;
+window.OptionalBool = React.PropTypes.bool;
+window.OptionalFunc = React.PropTypes.func;
+window.OptionalNumber = React.PropTypes.number;
+window.OptionalObject = React.PropTypes.object;
+window.OptionalString = React.PropTypes.string;
+window.OptionalNode = React.PropTypes.node;
+window.OptionalElement = React.PropTypes.element;
+window.oneOf = React.PropTypes.oneOf;
+window.oneOfType = React.PropTypes.oneOfType;
+window.RequiredArray = React.PropTypes.array.isRequired;
+window.RequiredBool = React.PropTypes.bool.isRequired;
+window.RequiredFunc = React.PropTypes.func.isRequired;
+window.RequiredNumber = React.PropTypes.number.isRequired;
+window.RequiredObject = React.PropTypes.object.isRequired;
+window.RequiredString = React.PropTypes.string.isRequired;
+window.RequiredNode = React.PropTypes.node.isRequired;
+window.RequiredElement = React.PropTypes.node.isRequired;
 
-const PropTypes = require('prop-types');
-window.Any = PropTypes.any;
-window.OptionalArray = PropTypes.array;
-window.OptionalBool = PropTypes.bool;
-window.OptionalFunc = PropTypes.func;
-window.OptionalNumber = PropTypes.number;
-window.OptionalObject = PropTypes.object;
-window.OptionalString = PropTypes.string;
-window.OptionalNode = PropTypes.node;
-window.OptionalElement = PropTypes.element;
-window.oneOf = PropTypes.oneOf;
-window.oneOfType = PropTypes.oneOfType;
-window.RequiredArray = PropTypes.array.isRequired;
-window.RequiredBool = PropTypes.bool.isRequired;
-window.RequiredFunc = PropTypes.func.isRequired;
-window.RequiredNumber = PropTypes.number.isRequired;
-window.RequiredObject = PropTypes.object.isRequired;
-window.RequiredString = PropTypes.string.isRequired;
-window.RequiredNode = PropTypes.node.isRequired;
-window.RequiredElement = PropTypes.node.isRequired;
+window.Link = require('react-router').Link;
 
-const each = require('lodash/each');
-const filter = require('lodash/filter');
-const find = require('lodash/find');
-const partial = require('lodash/partial');
-const findIndex = require('lodash/findIndex');
-const range = require('lodash/range');
-const map = require('lodash/map');
-const cloneDeep = require('lodash/cloneDeep');
-const keyBy = require('lodash/keyBy');
-window._ = {each, filter, find, partial, findIndex, range, map,cloneDeep,keyBy};
+//Analytics
+if (Project.ga) {
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', Project.ga, 'auto');
+}
+
+

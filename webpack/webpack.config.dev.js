@@ -2,7 +2,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'eval',
     mode: "development",
     entry: [
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false',
@@ -17,14 +17,19 @@ module.exports = {
         publicPath: 'http://localhost:8080/build/',
         filename: '[name].js'
     },
+    externals: {
+        // require("jquery") is external and available
+        //  on the global var jQuery
+        "jquery": "jQuery",
+    },
     plugins: require('./plugins').concat([
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        //If you happen to use jQuery
-        // new webpack.ProvidePlugin({
-        // 	$: "jquery",
-        // 	jQuery: "jquery"
-        // })
+        new webpack.ProvidePlugin({
+        	$: "jquery",
+        	jQuery: "jquery",
+            jquery: "jquery"
+        })
     ]),
     module: {
         rules: require('./loaders')

@@ -44,6 +44,40 @@ const Point = class extends Component {
         }
     }
 };
+const TweetAside = class extends Component {
+    displayName: 'TheComponent'
+
+    render() {
+        const {emotion} = this.props;
+        switch (emotion.toLowerCase()) {
+            case"joy":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'yellow'}}>
+                    </span>
+                )
+            case"anger":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'red'}}>
+                    </span>
+                )
+            case"fear":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'grey'}}>
+                    </span>
+                )
+            case"disgust":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'green'}}>
+                    </span>
+                )
+            case"sadness":
+                return (
+                    <span style={{display: "inline-block", width: 10, height: 10, backgroundColor: 'blue'}}>
+                    </span>
+                )
+        }
+    }
+};
 
 export default class Map extends Component {
     constructor(props) {
@@ -81,6 +115,14 @@ export default class Map extends Component {
         const {viewport, tweets} = this.state;
         return (
             <div>
+                <Row>
+                    <Column>
+                        Emoji mode
+                    </Column>
+                    <Column>
+                        <Switch onChange={(checked)=>{this.setState({checked})}} checked={this.state.checked}/>
+                    </Column>
+                </Row>
                 <div className="row">
                     <div className="col-md-2 sidebar" style={{paddingRight: 0}}>
                         <div className="card">
@@ -89,6 +131,7 @@ export default class Map extends Component {
                                 <ul>
                                     {tweets.map((tweet) => (
                                         <li>
+                                            <TweetAside emotion={tweet.emotion}/>
                                             {tweet.text}
                                         </li>
                                     ))}
@@ -104,7 +147,7 @@ export default class Map extends Component {
                             mapboxApiAccessToken={TOKEN}>
                             {tweets.map((tweet) => (
                                 <Marker latitude={tweet.lat} longitude={tweet.lng} offsetLeft={-20} offsetTop={-10}>
-                                    <Point emotion={tweet.emotion}/>
+                                    <Point emojiMode={this.state.checked} emotion={tweet.emotion}/>
                                 </Marker>
                             ))}
                         </ReactMapGL>

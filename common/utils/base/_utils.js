@@ -76,10 +76,9 @@ var Utils = {
                 reader.readAsDataURL(blob)
             }))
 
-
-        toDataURL(url)
+        return toDataURL(url)
             .then(dataUrl => {
-                console.log('RESULT:', dataUrl)
+               return dataUrl
             })
     },
 
